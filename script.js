@@ -2,7 +2,19 @@
  * TODO: Implement a function that clears all the content
  * prior to generating new random content
  */
-function clearAll() {}
+function clearAll() {
+  const meme = document.querySelector('.meme-content');
+  const joke = document.querySelector('.joke-content');
+  const quote = document.querySelector('quote-content');
+  const riddle = document.querySelector('.riddle-content');
+
+  meme.innerHTML = '';
+  joke.innerHTML = '';
+  quote.innerHTML = '';
+  riddle.innerHTML = '';
+
+
+}
 
 /**
  * TODO:
@@ -12,6 +24,16 @@ function clearAll() {}
 function showMeme() {
   // Value is a string representing image URL
   const randomMemeUrl = getRandomData("memes");
+
+  const memeContainer = document.querySelector('.meme-content');
+  const newMeme = document.createElement('img');
+  newMeme.setAttribute('src', randomMemeUrl);
+
+  clearAll();
+
+  // add the new img to the document
+  memeContainer.appendChild(newMeme);
+
 }
 
 /**
@@ -22,6 +44,15 @@ function showMeme() {
 function showJoke() {
   // Value is a string representing the joke
   const randomJokeText = getRandomData("jokes");
+
+  const jokeContainer = document.querySelector('.joke-content');
+  const newJoke = document.createElement('.joke-content');
+  newJoke.textContent = randomJokeText;
+
+  clearAll();
+
+  // add the new joke to the document
+  jokeContainer.appendChild(newJoke);
 }
 
 /**
@@ -32,6 +63,20 @@ function showJoke() {
 function showQuote() {
   // Value should be in format: { quote: '', author: '' }
   const randomQuote = getRandomData("quotes");
+
+  const quoteContainer = document.querySelector('.quote-content');
+  const newQuoteText = document.createElement('p');
+  const newQuoteAuthor = document.createElement('p ');
+  newQuoteText.textContent = randomQuote.quote;
+  newQuoteAuthor.textContent = '-' + randomQuote.author;
+
+  clearAll();
+
+  // add the new joke to the document
+  quoteContainer.appendChild(newQuoteText);
+  quoteContainer.appendChild(newQuoteAuthor);
+
+
 }
 
 /**
@@ -43,6 +88,21 @@ function showQuote() {
 function showRiddle() {
   // Value should be in format: { question: '', answer: '' }
   const randomRiddle = getRandomData("riddles");
+
+  const riddleContainer = document.querySelector('.riddle-content');
+  const newRiddleQuestion = document.createElement('p');
+  const newRiddleAnswer = document.createElement('p');
+  newRiddleQuestion.textContent = randomRiddle.question;
+  newRiddleAnswer.textContent  = 'The answer is : '+ randomRiddle.answer;
+  newRiddleAnswer.setAttribute('id', 'riddle-answer');
+
+  clearAll();
+
+  newRiddleAnswer.hidden = true;
+
+  riddleContainer.appendChild(newRiddleQuestion);
+  riddleContainer.appendChild(newRiddleAnswer );
+
 }
 
 /**
@@ -52,7 +112,21 @@ function showRiddle() {
  *   that the answer is already revealed
  * - If there is a riddle shown but no answer, unhide the answer!
  */
-function revealAnswers() {}
+function revealAnswers() {
+  const riddleContent = document.querySelector('.riddle-content ');
+  const riddle = riddleContent.querySelector('p ');
+  const riddleAnswer = document.querySelector('#riddle-answer');
+
+  if (riddle && riddleAnswer.hidden){
+    riddleAnswer.hidden = false;
+  }else if (riddle && riddleAnswer){
+    alert('The riddle answer is already revealed');
+  }else {
+    alert('There is no riddle to show the answer for !')
+  }
+
+
+}
 
 /**
  * This function is used to get random data.  Don't worry about how it works, just know how to use it.  Usage is pre-filled in the functions above already, but here's an explanation of the function anyways.
@@ -102,6 +176,8 @@ const memes = [
   "https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Error-in-Code-896x1024.jpg",
   "https://www.thecoderpedia.com/wp-content/uploads/2020/06/Coding-Meme-Code-Comments-be-Like-925x1024.jpg",
   "https://www.thecoderpedia.com/wp-content/uploads/2020/06/Internet-Explorer-Joke-915x1024.jpg",
+  "https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Hello-World.jpg",
+  "https://www.thecoderpedia.com/wp-content/uploads/2020/06/Are-you-a-robot-Meme.jpg"
 ];
 
 // Sourced from: http://www.devtopics.com/best-programming-jokes/
