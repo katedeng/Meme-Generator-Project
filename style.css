@@ -7,8 +7,8 @@ Just write your HTML however you want and these will automatically work.
 */
 
 body {
-  background-color: #1d2326;
-  color: #bfa38a;
+  background-color:black;
+  color: pink;
   font-family: monospace;
 }
 
@@ -53,6 +53,9 @@ a:hover {
   padding-left: 30px;
   padding-right: 20px;
 }
+.content {
+  color: blue;
+}
 
 .content p {
   max-width: 80%;
@@ -76,7 +79,7 @@ button {
   height: 35px;
   border: 1px solid #bfa38a;
   background: transparent;
-  color: #bfa38a;
+  color: green;
   border-radius: 5px;
 }
 
@@ -92,6 +95,6 @@ button:hover {
 }
 
 .reveal-btn:hover {
-  color: white;
+  color: darkred;
   background-color: transparent;
 }
